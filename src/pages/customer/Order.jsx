@@ -69,51 +69,62 @@ const Order = () => {
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl shadow-sm p-4 flex items-center justify-between"
+                className="
+      bg-white rounded-2xl shadow-sm p-4
+      flex flex-col md:flex-row
+      gap-4 md:items-center md:justify-between
+    "
               >
-                {/* Left Section */}
+                {/* LEFT - Image + Name */}
                 <div className="flex items-center gap-4">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-20 h-20 rounded-full object-cover"
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
                   />
 
                   <div>
-                    <h3 className="font-semibold text-gray-800">{item.name}</h3>
+                    <h3 className="font-semibold text-gray-800 text-sm md:text-base">
+                      {item.name}
+                    </h3>
                     <p className="text-xs text-gray-400">
                       Fresh vegetable salad
                     </p>
                   </div>
                 </div>
 
-                {/* Price */}
-                <p className="font-semibold text-gray-800">₹{item.price}</p>
+                {/* RIGHT SIDE */}
+                <div className="flex items-center justify-between md:gap-6">
+                  {/* Price */}
+                  <p className="font-semibold text-gray-800 text-sm md:text-base">
+                    ₹{item.price}
+                  </p>
 
-                {/* Quantity */}
-                <div className="flex items-center bg-red-500 text-white rounded-lg">
+                  {/* Quantity */}
+                  <div className="flex items-center bg-red-500 text-white rounded-lg">
+                    <button
+                      onClick={() => decreaseQty(item.id)}
+                      className="px-3 py-1"
+                    >
+                      -
+                    </button>
+                    <span className="px-3">{item.qty}</span>
+                    <button
+                      onClick={() => increaseQty(item.id)}
+                      className="px-3 py-1"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  {/* Delete */}
                   <button
-                    onClick={() => decreaseQty(item.id)}
-                    className="px-3 py-1"
+                    onClick={() => removeItem(item.id)}
+                    className="text-red-400 hover:text-red-600"
                   >
-                    -
-                  </button>
-                  <span className="px-3">{item.qty}</span>
-                  <button
-                    onClick={() => increaseQty(item.id)}
-                    className="px-3 py-1"
-                  >
-                    +
+                    <Trash2 size={20} />
                   </button>
                 </div>
-
-                {/* Delete */}
-                <button
-                  onClick={() => removeItem(item.id)}
-                  className="text-red-400 hover:text-red-600"
-                >
-                  <Trash2 size={20} />
-                </button>
               </div>
             ))}
           </div>
