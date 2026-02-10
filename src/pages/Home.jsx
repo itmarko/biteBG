@@ -1,35 +1,33 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { QRCodeCanvas } from "qrcode.react";
 
 const Home = () => {
-  const navigate = useNavigate();
+  const tableId = 1; // Example table number
+
+  // QR opens register page
+  const qrValue = `${window.location.origin}/customer/register/${tableId}`;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="text-center space-y-6">
-        <h1 className="text-3xl font-bold text-gray-800">
+        <h1 className="text-3xl font-semibold text-gray-800">
           Welcome to BiteBG
         </h1>
 
-        <p className="text-gray-500">
-          Scan QR • Order Food • Pay Easily
-        </p>
+        <p className="text-gray-500">Scan QR • Order Food • Pay Easily</p>
 
-        {/* Default Customer Button */}
-        <button
-          onClick={() => navigate("/customer/register")}
-          className="
-            px-6 py-3 rounded-lg
-            border border-gray-300
-            bg-white text-black font-medium
-            transition-all duration-300
-            shadow-sm
-            hover:-translate-x-1 hover:-translate-y-1
-            hover:shadow-[6px_6px_0px_#969696]
-          "
-        >
-          Start Order
-        </button>
+        {/* QR CODE CARD */}
+        <div className="bg-white p-6 rounded-2xl border shadow-sm inline-block">
+          <QRCodeCanvas
+            value={qrValue}
+            size={180}
+            bgColor="#ffffff"
+            fgColor="#000000"
+            level="H"
+          />
+        </div>
+
+        <p className="text-sm text-gray-400">Table #{tableId}</p>
       </div>
     </div>
   );
