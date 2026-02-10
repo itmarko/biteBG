@@ -5,7 +5,7 @@ const Home = () => {
   const tableId = 1; // Example table number
 
   // QR opens register page
-  const qrValue = `${window.location.origin}/customer/register/${tableId}`;
+  const qrValue = `${window.location.origin}/customer/menu/${tableId}`;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
