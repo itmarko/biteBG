@@ -14,7 +14,7 @@ const Payment = () => {
   const [mode, setMode] = useState(null);
   const [showQR, setShowQR] = useState(false);
 
-  const upiId = "resturent@upi";
+  const upiId = "9179026397@upi";
 
   const upiUrl = `upi://pay?pa=${upiId}&pn=Restaurant&tn=Order%20${orderId}&am=${total}&cu=INR`;
 
