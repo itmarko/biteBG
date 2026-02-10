@@ -119,7 +119,7 @@ const Order = () => {
           </div>
 
           {/* RIGHT SIDE - CART TOTAL */}
-          <div className="bg-white rounded-2xl shadow-sm p-6 h-fit">
+          <div className="bg-white rounded-2xl shadow-sm p-6 sticky bottom-6 self-end">
             <h2 className="text-lg font-semibold mb-4">Cart Total</h2>
 
             <div className="flex justify-between text-gray-600 mb-2">
