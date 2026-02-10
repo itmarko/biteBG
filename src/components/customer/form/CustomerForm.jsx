@@ -1,7 +1,16 @@
 import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function CustomerForm() {
-  const [formData, setFormData] = useState({ name: "", mobile: "" });
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const tableId = searchParams.get("tableId"); // from QR
+
+  const [formData, setFormData] = useState({
+    name: "",
+    mobile: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -10,7 +19,11 @@ function CustomerForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    console.log(formData);
+
+    // ✅ go to customer menu page
+    navigate(`/customer/menu/${tableId}`);
   };
 
   return (
