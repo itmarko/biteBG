@@ -13,7 +13,8 @@ import CustomerLayout from "../layouts/CustomerLayout";
 import BiteManagerLogin from "../auth/login/BiteManagerLogin";
 import AdminLogin from "../auth/login/AdminLogin";
 import KitchenLogin from "../auth/login/KitchenLogin";
-import ErrorPage from "../pages/ErrorPage";
+// import ErrorPage from "../pages/ErrorPage";
+import Home from "../pages/Home";
 
 // import MarkoDashboard from "../pages/marko/Dashboard";
 // import CompaniesList from "../pages/marko/CompaniesList";
@@ -41,6 +42,7 @@ const AppRouter = () => (
         <Route path="/login/marko" element={<BiteManagerLogin />} />
         <Route path="/login/admin" element={<AdminLogin />} />
         <Route path="/login/kitchen" element={<KitchenLogin />} />
+        <Route path="/" element={<Home />} />
         {/* MARKO ROUTES */}
         <Route
           path="/bite-manager"
@@ -92,7 +94,8 @@ const AppRouter = () => (
           <Route path="payment/:orderId" element={<CustomerPayment />} />
         </Route>
         {/* DEFAULT ROUTE */}
-        <Route path="*" element={<ErrorPage />} />
+        {/* <Route path="*" element={<ErrorPage />} /> */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   </AuthProvider>
